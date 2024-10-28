@@ -8,3 +8,8 @@
 - what is dependencies
 - what is the use of  "-g" while npm i nodemon
 - diff between caret^ and tilde~
+
+- play with route add extention ex -  /hello , hello/22/ee
+- order of routes matter a lots
+- install postman app and make a workspace /collection > test api call 
+- write logic to handle get , post , patch , delete appi calls and tests them on postman
