@@ -13,3 +13,7 @@
 - order of routes matter a lots
 - install postman app and make a workspace /collection > test api call 
 - write logic to handle get , post , patch , delete appi calls and tests them on postman
+- explore erouting and use ? , *,(), * in the routes
+- use of regex in routes /a/ . //*fly$/
+- Reading the query params and dyanamic routes
+- Reading the dyanamic routes
