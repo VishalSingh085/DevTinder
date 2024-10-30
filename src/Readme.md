@@ -17,3 +17,8 @@
 - use of regex in routes /a/ . //*fly$/
 - Reading the query params and dyanamic routes
 - Reading the dyanamic routes
+
+- multiple Route handlers - play with code
+- next()
+- next fn() and error along with res.send()
+- app.use("/route",rh,[ rh2,rh3 ],rh4,rh5);
