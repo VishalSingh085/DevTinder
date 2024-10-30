@@ -27,3 +27,4 @@
 - diff app.use & app.all minor diff in routing
 - write a dummy auth middleware for admin
 - write a dummy auth middleware for all user routes, except /user/login
+- Error handling using app.use("/",(err,req,res,next)={})
