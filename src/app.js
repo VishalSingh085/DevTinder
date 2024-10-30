@@ -1,48 +1,48 @@
 const express = require("express");
+const { AuthData, AuthUser } = require("./Middleware/auth");
 const app = express();
 
-//this will only Get call to /user
-//ab?c- it work ac and abc'  ab+c = abbbbc abddc abc
-//rputing diff regex and  *fly$ = means last word same
+// Middleware for authentication on specific routes
+app.use("/admin", AuthData);
+app.use("/user", AuthUser);
 
-app.get("/user",[(req,res,next)=>{
-    console.log("res1");
-    
-    next()
-    res.send("response 1")
-},
-(req,res,next)=>{
-    console.log("res2");
-    next()
-    res.send("response 2")
-}],
-(req,res)=>{
-    console.log("res3");
-    res.send("response 3")
-},
-)
+// Route to add data
+app.get("/admin/addData", (req, res) => {
+    res.status(200).send("Data sent successfully !!");
+});
 
+// User login route
+app.get("/user/login", (req, res) => {
+    res.status(200).send("Login data successful");
+});
 
-// app.get('/user/:userId/:password/:course',(req, res)=>{
-//     // console.log(req.query);
-//     console.log(req.params);
-//    res.send({firstName:"Vivek",lastName:"thakur"})
-// })
+// User data route with authentication
+app.get("/user/userData", AuthUser, (req, res) => {
+    res.status(200).send("User data sent successfully...");
+});
 
+// Route to delete data
+app.get("/admin/deleteData", (req, res) => {
+    res.status(200).send("Deleted data");
+});
 
+// Correctly defining a POST route with regex
+app.post(/.*fly$/, (req, res) => {
+    res.status(201).send("Data successfully saved to database");
+});
 
-app.post(/.*fly$/ ,(req,res)=>{
-res.send("data successfully saved to database")
-})
-app.delete("/user",(req,res)=>{
-   res.send("deleted successsfully");
-})
+// Route to delete user
+app.delete("/user", (req, res) => {
+    res.status(200).send("Deleted successfully");
+});
 
-//this will match all http method api calls to /test
-app.use("/test/2",(req,res)=>{
-    res.send(" test 2");
- })
+// Global error handler
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send("Something went wrong!");
+});
 
-app.listen(3000,()=>{
-    console.log("Server is running in 3000 ports");
-})
+// Start the server on port 3000
+app.listen(3000, () => {
+    console.log("Server is running on port 3000");
+});
